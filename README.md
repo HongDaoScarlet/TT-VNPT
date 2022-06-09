@@ -1,8 +1,8 @@
-# BÁO CÁO THỰC TẬP TUẦN 1
+# **BÁO CÁO THỰC TẬP TUẦN 1** 🌱
+✨✨✨
 
-
-## Nguyễn Thị Hồng Đào
-## MSSV: B1809115
+### _Nguyễn Thị Hồng Đào_
+### _MSSV: B1809115_
 
 ### **Câu 1: Angular là gì? Lợi ích của Angular so với javascript thuần**
 - Angular được xe là một open source (mã nguồn mở) hay frameworks miễn phí chuyên dụng cho 
@@ -62,3 +62,178 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
   + Tự động cấu hình Spring khi cần thiết
   + Không sinh code cấu hình và không yêu cầu phải cấu hình bằng XML …  
 
+<br/>
+<br/>
+
+# **BÁO CÁO THỰC TẬP TUẦN 2** 🌱
+✨✨✨
+
+-	**Dự án:** ***Xây dựng hệ thống quản lý bệnh viện HISL2.***
+- Phân tích tài liệu hướng dẫn sử dụng Quản lý bệnh nhân. Vẽ sơ đồ use case, sơ đồ lớp và sơ đồ tuần tự.
+
+## **I. Sơ đồ use case (Use case diagram)**
+\
+\
+![Usecase](HinhAnh\UseCaseBenhNhan.png)
+\
+\
+💎:diamonds:  **Đặc tả use case**
+\
+\
+💫 Usecase Đăng nhập: 💫
+
+| **Mã use case**     | **UC01**      |
+| --------------------|:----------|
+| Tên use case	      | Đăng nhập |
+| Tác nhân chính      | Bệnh nhân |
+| Tiền điều kiện      | Không có  |
+| Hậu điều kiện       | Đăng nhập thành công vào hệ thống |
+| Điều kiện tối thiểu	| Yêu cầu bệnh nhân đăng nhập lại |
+| Sự kiện chính	| 1. Hệ thống hiển thị màn hình đăng nhập <br/>2. Bệnh nhân nhập thông tin tài khoản và mật khẩu <br/>3. Bệnh nhân nhấn “Đăng nhập” <br/>4. Hệ thống chứng thực tài khoản <br/>5. Hệ thống thông báo đăng nhập thành công |
+| Ngoại lệ	| 4.1. Hệ thống chứng thực thất bại, yêu cầu bệnh nhân nhập lại thông tin tài khoản, mật khẩu. |
+
+\
+💫 Usecase Đăng kí hẹn khám: 💫
+
+| **Mã use case**     | **UC03**  |
+| --------------------|:----------|
+| Tên use case	      | Đăng kí hẹn khám |
+| Tác nhân chính      | Bệnh nhân |
+| Tiền điều kiện      | Đăng nhập thành công vào hệ thống |
+| Hậu điều kiện       | Đăng kí thành công lịch hẹn khám |
+| Điều kiện tối thiểu	| Loại bỏ thông tin đã nhập và quay lại bước trước |
+| Sự kiện chính	      | 1. Hệ thống hiển thị màn hình đăng kí hẹn khám <br />2. Bệnh nhân điền đầy đủ thông tin hẹn khám <br />3. Bệnh nhân nhấn “Đăng ký” <br />4. Hệ thống chứng thực thông tin hẹn khám <br/>5. Hệ thống thông báo đăng kí thành công |
+| Ngoại lệ	          | 4.1. Hệ thống chứng thực thất bại, quay lại màn hình đăng kí hẹn khám. |
+
+\
+💫 Use case Quản lý lịch hẹn khám: 💫
+
+| **Mã use case**     | **UC04**  |
+| --------------------|:----------|
+| Tên use case	      | Quản lý lịch hẹn khám |
+| Tác nhân chính      | Bệnh nhân |
+| Tiền điều kiện      | Đăng nhập thành công vào hệ thống |
+| Hậu điều kiện       | Xem được lịch sử hẹn khám |
+| Điều kiện tối thiểu	| Không có dữ liệu để xuất |
+| Sự kiện chính	      | 1. Hệ thống hiển thị màn hình xem lịch sử hẹn khám <br/>2. Bệnh nhân nhấn vào các chức năng muốn thực hiện (sửa, xóa) <br/>3. Bệnh nhân nhập thông tin cần thiết <br/>4. Hệ thống chứng thực thông tin lịch hẹn khám <br/>5. Hệ thống thông báo cập nhật thành công |
+| Ngoại lệ	          | 4.1. Hệ thống chứng thực thất bại, quay về màn hình quản lý lịch hẹn khám. |
+
+\
+💫	Use case Quản lý tài khoản: 💫
+
+| **Mã use case**     | **UC05**  |
+| --------------------|:----------|
+| Tên use case	      | Quản lý tài khoản |
+| Tác nhân chính      | Bệnh nhân |
+| Tiền điều kiện      | Đăng nhập thành công vào hệ thống |
+| Hậu điều kiện       | Cập nhật thành công tài khoản |
+| Điều kiện tối thiểu	| Loại bỏ thông tin đã nhập và quay lại bước trước |
+| Sự kiện chính	      | 1. Hệ thống hiển thị màn hình thông tin tài khoản <br/>2. Bệnh nhân nhấp chọn chức năng muốn thực hiện (sửa thông tin, đổi mật khẩu) <br/>3. Bệnh nhân nhập thông tin cần thiết để thực hiện chức năng <br/>4. Hệ thống chứng thực thông tin tài khoản <br/>5. Hệ thống thông báo cập nhật thành công. |
+| Ngoại lệ	          | 4.1. Hệ thống chứng thực thất bại, yêu cầu bệnh nhân nhập lại thông tin tài khoản |
+
+\
+💫	Use case Thống kê chi phí khám chữa bệnh: 💫
+
+| **Mã use case**     | **UC06**  |
+| --------------------|:----------|
+| Tên use case	      | Thống kê chi phí khám chữa bệnh |
+| Tác nhân chính      | Bệnh nhân |
+| Tiền điều kiện      | Đăng nhập thành công vào hệ thống |
+| Hậu điều kiện       | Xuất thống kê chi phí khám chữa bệnh |
+| Điều kiện tối thiểu	| Không có dữ liệu để xuất |
+| Sự kiện chính	      | 1. Hệ thống hiển thị màn hình thống kê chi phí khám chữa bệnh <br/>2. Bệnh nhân nhấp chọn chi tiết để xem chi tiết từng khoảng chi <br/>3. Hệ thống hiển thị kết quả thống kê |
+| Ngoại lệ	          | Không có |
+
+\
+💫	Use case Quản lý khám chữa bệnh: 💫
+
+| **Mã use case**     | **UC07**  |
+| --------------------|:----------|
+| Tên use case	      | Quản lý khám chữa bệnh |
+| Tác nhân chính      | Bệnh nhân |
+| Tiền điều kiện      | Đăng nhập thành công vào hệ thống |
+| Hậu điều kiện       | Xuất thông tin khám chữa bệnh |
+| Điều kiện tối thiểu	| Không có dữ liệu để xuất |
+| Sự kiện chính	      | 1. Hệ thống hiển thị màn hình thống kê lịch sử điều trị tổng hợp <br/>2. Bệnh nhân nhấp chọn nút chức năng chi tiết để xem thông tin lịch sử điều trị, thông tin khám chữa bệnh, các thông tin các phiếu điều trị, thông tin lịch sử thuốc. <br/>3. Hệ thống hiển thị thông tin khám chữa bệnh |
+| Ngoại lệ	          | Không có |
+
+\
+💫	Use case Tra cứu xét nghiệm: 💫
+
+| **Mã use case**     | **UC08**  |
+| --------------------|:----------|
+| Tên use case	      | Tra cứu xét nghiệm |
+| Tác nhân chính      | Bệnh nhân |
+| Tiền điều kiện      | Đăng nhập thành công vào hệ thống |
+| Hậu điều kiện       | Xuất thông tin phiếu xét nghiệm |
+| Điều kiện tối thiểu	| Không có dữ liệu để xuất |
+| Sự kiện chính	      | 1. Hệ thống hiển thị màn hình tra cứu xét nghiệm <br/>2. Bệnh nhân nhập thông tin tìm kiếm phiếu xét nghiệm và bấm nút tìm kiếm. <br/>3. Hệ thống hiển thị thông tin phiếu xét nghiệm |
+| Ngoại lệ	          | Không có |
+
+\
+💫	Use case Tra cứu CĐHA: 💫
+
+| **Mã use case**     | **UC09**  |
+| --------------------|:----------|
+| Tên use case	      | Tra cứu CĐHA |
+| Tác nhân chính      | Bệnh nhân |
+| Tiền điều kiện      | Đăng nhập thành công vào hệ thống |
+| Hậu điều kiện       | Xuất thông tin phiếu CĐHA|
+| Điều kiện tối thiểu	| Không có dữ liệu để xuất |
+| Sự kiện chính	      | 1. Hệ thống hiển thị màn hình tra cứu CĐHA <br/>2. Bệnh nhân nhập thông tin tìm kiếm phiếu CĐHA và bấm nút tìm kiếm. <br/>3. Hệ thống hiển thị thông tin phiếu CĐHA |
+| Ngoại lệ	          | Không có |
+
+
+## **II. Sơ đồ lớp (Class diagram)**
+\
+\
+![Class](HinhAnh\ClassQuanLyBenhNhan.png)
+<br/>
+<br/>
+
+## **III. Sơ đồ tuần tự (Sequence Diagram)**
+### ***1. Sơ đồ tuần tự chức năng Đăng nhập*** 🌸
+\
+![Class](HinhAnh\dangNhap.png)
+
+
+### ***2.	Sơ đồ tuần tự chức năng Quản lí tài khoản*** 🌸
+\
+![Class](HinhAnh\quanLyTaiKhoan.png)
+
+### ***3.	Sơ đồ tuần tự chức năng Đăng kí hẹn khám*** 🌸
+\
+![Class](HinhAnh\dangKiHenKham.png)
+
+### ***4.	Sơ đồ tuần tự chức năng xem Lịch sử hẹn khám*** 🌸
+\
+![Class](..\HinhAnh\xemLichSuHenKham.png)
+
+### ***5.	Sơ đồ tuần tự chức năng Thống kê chi phí*** 🌸
+\
+![Class](HinhAnh\thongKeChiPhi.png)
+
+### ***6.	Sơ đồ tuần tự chức năng Quản lý khám chữa bệnh*** 🌸
+\
+![Class](HinhAnh\quanLyKhamChuaBenh.png)
+
+### ***7.	Sơ đồ tuần tự chức năng Tra cứu xét nghiệm*** 🌸
+\
+![Class](HinhAnh\traCuuXetNghiem.png)
+
+### ***8.	Sơ đồ tuần tự chức năng Tra cứu CĐHA*** 🌸
+\
+![Class](HinhAnh\traCuuCDHA.png)
+
+<br/>
+<br/>
+
+# **BÁO CÁO THỰC TẬP TUẦN 3** 🌱
+✨✨✨
+
+**Nhiệm Vụ**: _tuần này các bạn viết báo cáo giùm anh 
+về jhipster nha và các áp dụng angular trong jhipster_
+
+💬 **Tìm hiểu Jhipster**
+
+💬 **Áp dụng Angular vào jhipster**
