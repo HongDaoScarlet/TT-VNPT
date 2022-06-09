@@ -13,7 +13,7 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
   vì vậy cứ yên tâm sử dụng.
   + Cộng đồng người dùng lớn nên nếu có thắc mắc gì cũng sẽ nhanh chóng được giải đáp.
   + Giúp phát triển Ứng dụng trang đơn (Single-page Application). Đây là ứng dụng chạy trên browser mà không bắt buộc phải tải lại trang khi sử dụng.
-
+:star2:
 ### **Câu 2: So sánh CSDL quan hệ và CSDL không quan hệ**
 | **Tiêu chí** | **Cơ sở dữ liệu quan hệ** | **Cơ sở dữ liệu không quan hệ** |
 |----------------|:---------------------:| :--------------------------:|
