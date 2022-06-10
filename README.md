@@ -1,8 +1,8 @@
-# **BÁO CÁO THỰC TẬP TUẦN 1** 🌱
+# **📖 BÁO CÁO THỰC TẬP TUẦN 1**
 ✨✨✨
 
-### _Nguyễn Thị Hồng Đào_
-### _MSSV: B1809115_
+🍁 **Nguyễn Thị Hồng Đào - Đoàn Nhật Linh** 🍁
+
 
 ### **Câu 1: Angular là gì? Lợi ích của Angular so với javascript thuần**
 - Angular được xe là một open source (mã nguồn mở) hay frameworks miễn phí chuyên dụng cho 
@@ -62,25 +62,122 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
   + Tự động cấu hình Spring khi cần thiết
   + Không sinh code cấu hình và không yêu cầu phải cấu hình bằng XML …  
 
-<br/>
-<br/>
+---
 
-# **BÁO CÁO THỰC TẬP TUẦN 2** 🌱
-✨✨✨
+### **I : Angular**
 
--	**Dự án:** ***Xây dựng hệ thống quản lý bệnh viện HISL2.***
+#### 1: Angular là gì ?
+
+- Angular là một nền tảng để xây dựng các ứng dụng web dành cho thiết bị di động và máy tính để bàn. Nó có một cộng đồng lớn với hàng triệu nhà phát triển chọn Angular để xây dựng giao diện người dùng hấp dẫn.
+- Angular là một front-end framework mã nguồn mở viết bằng JavaScript cho ứng dụng web. Nó chủ yếu được duy trì bởi Google cùng với một cộng đồng mở gồm các nhà phát triển và các công ty. Angular giải quyết nhiều thách thức phải đối mặt khi phát triển các ứng dụng SPA (Single Page Application), đa nền tảng, hiệu suất cao. Nó hoàn toàn có thể mở rộng và hoạt động rất tốt với các thư viện khác.
+
+#### 2: Ưu điểm
+
+- Angular cho phép người dùng xây dựng các component của riêng họ và có thể đóng gói chức năng cùng với logic kết xuất thành các phần có thể tái sử dụng. Nó cũng hoạt động tốt với các component của web.
+- Angular cho phép người dùng dễ dàng di chuyển dữ liệu từ mã JavaScript sang view và phản hồi với các sự kiện của người dùng mà không cần phải viết bất kỳ mã nào theo cách thủ công.
+- Angular cho phép người dùng viết các service mô-đun và đưa chúng vào bất cứ nơi nào họ cần. Điều này cải thiện khả năng kiểm tra và khả năng tái sử dụng của các service giống nhau.
+- Có thể dễ dàng Unit test mọi phần trong ứng dụng
+- Angular là một full-fledged Framework và có thể cung cấp các giải pháp tiện ích cho giao tiếp máy chủ, định tuyến trong ứng dụng và hơn thế nữa.
+- Angular cung cấp đa nền tảng và tương thích với nhiều trình duyệt. Một ứng dụng Angular thường có thể chạy trên tất cả các trình duyệt (Ví dụ: Chrome, Firefox) và hệ điều hành, chẳng hạn như Windows, macOS và Linux.
+
+#### 3: Nhược điểm
+
+- Không an toàn: Thông thường, bản chất của Angular là một trong những Framework Front End, mà Front end này thường vốn không thể bảo mật bằng Back-end. Chính vì vậy, khi sử dụng API thì bạn cần xây dựng cho một hệ thống kiểm tra dữ liệu sao cho việc trả về được tốt nhất.
+- Với một số trình duyệt sở hữu tính năng Disable JavaScript nên có nghĩa là website sẽ không hoàn toàn có thể sử dụng được dựa trên những trình duyệt đó nữa
+- Bạn nên viết mã ứng dụng Angular bằng TypeScript, vì vậy bạn phải học TypeScript.
+
+#### 4. Tính năng nổi bật của Angular
+
+- Controller: Tính năng hỗ trợ xử lý dữ liệu dành cho $scope. Với tính năng này, views dùng dữ liệu có sẵn tại scope để tiến hành hiển thị tương ứng.
+- Data-binding: Tính năng tự động đồng bộ hóa tất cả các dữ liệu giữa hai chiều model và view khi view có thay đổi.
+- Service: Cung cấp một loạt phương án dữ liệu bởi là singleton object có năng lực khởi tạo.
+- Scope: Là đối tượng giao tiếp giữa hai phía controller và view trong ứng dụng.
+- Filter: Hỗ trợ lọc tập hợp con có trong item rồi trả chúng về mảng mới.
+- Directive: Tính năng hỗ trợ tạo thẻ HTML. Một vài directive phổ biến là ngBind, ngModel…
+- Temple: Tính năng hiển thị các thông tin từ controller, được coi như một phần trong view.
+- Routing: Tính năng điều hướng, chuyển đổi trong controller. Người dùng có thể tạo SPA với tính năng này.
+- MVC & MVVM: Tính năng phân chia những ứng dụng chưa nhiều thành phần, gắn liền với MVC.
+- Deep link: Các liên kết sâu hỗ trợ lập trình viên trong việc mã hóa trạng thái ứng dụng trong các URL, nó khả năng bookmark với công cụ tìm kiếm.
+- Dependency Injection: Tính năng này thường được tích hợp trong bản AngularJS, mang lại khả năng tạo lập những ứng dụng giàu tiềm năng phát triển, thao tác đơn giản, dễ kiểm tra.
+
+### **II : Hệ cơ sở dữ liệu phân tán**
+
+#### 1 : Khái niệm CSDL phân tán
+
+- CSDL phân tán là một tập hợp dữ liệu có liên quan (ᴠề logic) được dùng chung ᴠà phân tán ᴠề mặt ᴠật lí trên một mạng máу tính.
+- Một hệ QTCSDL phân tán là một hệ thống phần mềm cho phép quản trị CSDL phân tán ᴠà làm cho người ѕử dụng không nhận thấу ѕự phân tán ᴠề lưu trữ dữ liệu.
+- Người dùng truу cập ᴠào CSDL phân tán thông quan chương trình ứng dụng. Các chương trình ứng dụng được chia làm hai loại:
+  Chương trình không уêu cầu dữ liệu từ nơi khác. Chương trình có уêu cầu dữ liệu từ nơi khác.
+- Có thể chia các hệ CSDL phân tán thành 2 loại chính: thuần nhất ᴠà hỗn hợp.
+- Hệ CSDL phân tán thuần nhất: các nút trên mạng đều dùng cùng một hệ QTCSDL. Hệ CSDL phân tán hỗn hợp: các nút trên mạng có thể dùng các hệ QTCSDL khác nhau.
+
+#### 2:Ưu điểm và hạn chế
+
+- Ưu điểm
+  - Cấu trúc phân tán dữ liệu thích hợp cho bản chất phân tán của nhiều người dùng.
+  - Dữ liệu được chia sẽ trên mạng nhưng vẫn cho phép quản trị đữ liệu địa phương.
+  - Dữ liệu có tính sẵn sàng cao.
+  - Dữ liệu có tính tin cậy cao vì khi một nút gặp sự cố, có thể khôi phục dữ liệu tại đây do bản sao của nó có thể được lưu trữ tại một nút khác nữa.
+  - Hiệu năng của hệ thống được nâng cao.
+  - Cho phép mở rộng các tổ chức một cách linh hoạt. Có thể thêm nút mới mà không ảnh hưởng đến hoạt động của các nút sẵn có.
+- Hạn chế
+  - Hệ thống phức tạp
+  - Chi phí cao
+  - Đảm bảo an ninh khó hơn
+  - Khó đảm bảo tính nhất quán dữ liệu
+  - Thiết kế CSDL phân tán phức tạp hơn
+
+### **III: Microservices**
+
+#### 1 : Microservices là gì?
+
+- Microservices là tên gọi của các dịch vụ nhỏ thuộc dạng tách biệt đại diện cho 1 phần nhỏ tương ứng bên trong các Business domain của lập trình viên. Microservices được xem như giải pháp có thể cân bằng được tất cả các traffic dựa theo yêu cầu của doanh nghiệp.
+
+#### 2 : Ưu điểm
+
+- Microservices cho phép dễ dàng continuous delivery và deployment các ứng dụng lớn và phức tạp hơn.
+- Có thể cải thiện khả năng bảo trì: bởi vì các service tương đối nhỏ nên dễ hiểu và dễ thay đổi hơn.
+- Có khả năng testing dễ dàng: nhờ các services nhỏ
+- Có thể triển khai tốt hơn: các services thường rất dễ cho việc triển khai độc lập.
+- Cho phép các services được phát triển nhanh chóng bởi những team khác nhau. Khi đó, mỗi team đều sẽ được phát triển và thử nghiệm để triển khai cũng như mở rộng được quy mô của dịch vụ của mình một cách độc lập nhất với tất cả các team.
+- Nếu như có lỗi xảy ra trong một service thì chỉ có service đó bị ảnh hưởng và các service khác sẽ thực hiện xử lý các yêu cầu cần thiết. Trong khi đó, thì mỗi một thành phần nếu như hoạt động sai của kiến trúc một khối thì nó sẽ làm ảnh hưởng đến toàn bộ hệ thống.
+- Lập trình viên có thể thay đổi dễ dàng bằng cách sử dụng công nghệ mới khi triển khai các service. Tương tự như khi có thay đổi lớn thì các service đều có thể thực hiện và bạn dễ dàng thay đổi được công nghệ hơn.
+
+#### 3 : Hạn chế
+
+- Bởi vì các nhà phát triển thường xuyên phải đối phó với sự phức tạp khi tạo ra một hệ thống phân tán.
+- Cần phải implement việc communication giữa các inter-services
+- Handle partial failure rất phức tạp bởi vì luồng xử lý cần phải đi qua nhiều service khác nhau.
+- Khi thực hiện các requests trải rộng trên nhiều service khó khăn thì điều này cần đòi hỏi sự phối hợp giữa các team.
+- Thường rất khó khăn trong việc đảm bảo toàn vẹn cho CSDL nếu như triển khai theo các cấu trúc cơ sở dữ liệu dạng phân vùng.
+- Việc triển khai và quản lý microservices nếu như làm thủ công theo cách làm với ứng dụng thì sẽ rất phức tạp.
+- Lập trình viên cần phải xử lý các sự cố kết nối chậm, lỗi nếu như thông điệp không được gửi hoặc nếu như thông điệp được gửi đến nhiều đích đến vào các thời điểm khác nhau.
+
+#### 4: Lợi ích của Microservices
+
+- Source code rất tinh gọn: Bởi vì hệ thống được cấu thành từ các dự án nhỏ, và mỗi dự án đều rất đơn giản cũng như tập trung vào 1 hoặc 1 vài nghiệp vụ chính. Vì vậy, các code base và độ phức tạp của chúng đều không cao. Nhờ vậy, nó sẽ giúp mang lại tính gọn nhẹ, dễ bảo trì cũng như mở rộng hơn.
+- Bảo mật tối ưu cho source code: Khi nhân viên làm việc ở các dự án thì chỉ truy cập được vào một source code của dự án đó.
+- Được tồn tại độc lập: Bởi vì đây là 4 dự án khác nhau và chúng có thể có cách deploy riêng biệt và một service nào đó chết thì các service khác vẫn sẽ hoạt động một cách bình thường.
+- Scale hoàn toàn độc lập: Tùy thuộc vào nhu cầu sử dụng của hệ thống mà bạn có thể scale riêng cho service đó. Có thể như service đơn hàng mà sử dụng thường xuyên nên chạy từ 2 đến 3 server để gia tăng performance.
+
+___
+
+# **📖 BÁO CÁO THỰC TẬP TUẦN 2**
+✨✨✨ 
+
+-	**Dự án: _Xây dựng hệ thống quản lý bệnh viện HISL2._**
 - Phân tích tài liệu hướng dẫn sử dụng Quản lý bệnh nhân. Vẽ sơ đồ use case, sơ đồ lớp và sơ đồ tuần tự.
 
 ## **I. Sơ đồ use case (Use case diagram)**
 \
 \
-![Usecase](HinhAnh\UseCaseBenhNhan.png)
+![Usecase](..\HinhAnh\UseCaseBenhNhan.png)
 \
 \
-💎:diamonds:  **Đặc tả use case**
+💎  **Đặc tả use case**
 \
 \
-💫 Usecase Đăng nhập: 💫
+💫 ___Usecase Đăng nhập:___ 💫
 
 | **Mã use case**     | **UC01**      |
 | --------------------|:----------|
@@ -93,7 +190,7 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
 | Ngoại lệ	| 4.1. Hệ thống chứng thực thất bại, yêu cầu bệnh nhân nhập lại thông tin tài khoản, mật khẩu. |
 
 \
-💫 Usecase Đăng kí hẹn khám: 💫
+💫 ___Usecase Đăng kí hẹn khám:___ 💫
 
 | **Mã use case**     | **UC03**  |
 | --------------------|:----------|
@@ -106,7 +203,7 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
 | Ngoại lệ	          | 4.1. Hệ thống chứng thực thất bại, quay lại màn hình đăng kí hẹn khám. |
 
 \
-💫 Use case Quản lý lịch hẹn khám: 💫
+💫 ___Use case Quản lý lịch hẹn khám:___ 💫
 
 | **Mã use case**     | **UC04**  |
 | --------------------|:----------|
@@ -119,7 +216,7 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
 | Ngoại lệ	          | 4.1. Hệ thống chứng thực thất bại, quay về màn hình quản lý lịch hẹn khám. |
 
 \
-💫	Use case Quản lý tài khoản: 💫
+💫	___Use case Quản lý tài khoản:___ 💫
 
 | **Mã use case**     | **UC05**  |
 | --------------------|:----------|
@@ -132,7 +229,7 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
 | Ngoại lệ	          | 4.1. Hệ thống chứng thực thất bại, yêu cầu bệnh nhân nhập lại thông tin tài khoản |
 
 \
-💫	Use case Thống kê chi phí khám chữa bệnh: 💫
+💫	___Use case Thống kê chi phí khám chữa bệnh:___ 💫
 
 | **Mã use case**     | **UC06**  |
 | --------------------|:----------|
@@ -145,7 +242,7 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
 | Ngoại lệ	          | Không có |
 
 \
-💫	Use case Quản lý khám chữa bệnh: 💫
+💫	___Use case Quản lý khám chữa bệnh:___ 💫
 
 | **Mã use case**     | **UC07**  |
 | --------------------|:----------|
@@ -158,7 +255,7 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
 | Ngoại lệ	          | Không có |
 
 \
-💫	Use case Tra cứu xét nghiệm: 💫
+💫	___Use case Tra cứu xét nghiệm:___ 💫
 
 | **Mã use case**     | **UC08**  |
 | --------------------|:----------|
@@ -171,7 +268,7 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
 | Ngoại lệ	          | Không có |
 
 \
-💫	Use case Tra cứu CĐHA: 💫
+💫	___Use case Tra cứu CĐHA:___ 💫
 
 | **Mã use case**     | **UC09**  |
 | --------------------|:----------|
@@ -187,53 +284,137 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
 ## **II. Sơ đồ lớp (Class diagram)**
 \
 \
-![Class](HinhAnh\ClassQuanLyBenhNhan.png)
+![Class](..\HinhAnh\ClassQuanLyBenhNhan.png)
 <br/>
 <br/>
 
 ## **III. Sơ đồ tuần tự (Sequence Diagram)**
-### ***1. Sơ đồ tuần tự chức năng Đăng nhập*** 🌸
+### ***1. Sơ đồ tuần tự chức năng Đăng nhập***
 \
-![Class](HinhAnh\dangNhap.png)
+![Class](..\HinhAnh\dangNhap.png)
 
 
-### ***2.	Sơ đồ tuần tự chức năng Quản lí tài khoản*** 🌸
+### ***2.	Sơ đồ tuần tự chức năng Quản lí tài khoản***
 \
-![Class](HinhAnh\quanLyTaiKhoan.png)
+![Class](..\HinhAnh\quanLyTaiKhoan.png)
 
-### ***3.	Sơ đồ tuần tự chức năng Đăng kí hẹn khám*** 🌸
+### ***3.	Sơ đồ tuần tự chức năng Đăng kí hẹn khám***
 \
-![Class](HinhAnh\dangKiHenKham.png)
+![Class](..\HinhAnh\dangKiHenKham.png)
 
-### ***4.	Sơ đồ tuần tự chức năng xem Lịch sử hẹn khám*** 🌸
+### ***4.	Sơ đồ tuần tự chức năng xem Lịch sử hẹn khám***
 \
 ![Class](..\HinhAnh\xemLichSuHenKham.png)
 
-### ***5.	Sơ đồ tuần tự chức năng Thống kê chi phí*** 🌸
+### ***5.	Sơ đồ tuần tự chức năng Thống kê chi phí***
 \
-![Class](HinhAnh\thongKeChiPhi.png)
+![Class](..\HinhAnh\thongKeChiPhi.png)
 
-### ***6.	Sơ đồ tuần tự chức năng Quản lý khám chữa bệnh*** 🌸
+### ***6.	Sơ đồ tuần tự chức năng Quản lý khám chữa bệnh***
 \
-![Class](HinhAnh\quanLyKhamChuaBenh.png)
+![Class](..\HinhAnh\quanLyKhamChuaBenh.png)
 
-### ***7.	Sơ đồ tuần tự chức năng Tra cứu xét nghiệm*** 🌸
+### ***7.	Sơ đồ tuần tự chức năng Tra cứu xét nghiệm***
 \
-![Class](HinhAnh\traCuuXetNghiem.png)
+![Class](..\HinhAnh\traCuuXetNghiem.png)
 
-### ***8.	Sơ đồ tuần tự chức năng Tra cứu CĐHA*** 🌸
+### ***8.	Sơ đồ tuần tự chức năng Tra cứu CĐHA***
 \
-![Class](HinhAnh\traCuuCDHA.png)
+![Class](..\HinhAnh\traCuuCDHA.png)
 
+
+___
 <br/>
-<br/>
 
-# **BÁO CÁO THỰC TẬP TUẦN 3** 🌱
+# **📖 BÁO CÁO THỰC TẬP TUẦN 3**
 ✨✨✨
 
-**Nhiệm Vụ**: _tuần này các bạn viết báo cáo giùm anh 
-về jhipster nha và các áp dụng angular trong jhipster_
+>**Nhiệm Vụ**: _Viết báo cáo về jhipster và các áp dụng angular trong jhipster (06 - 10/06/2022)_
 
-💬 **Tìm hiểu Jhipster**
+## **I. Tìm hiểu Jhipster**
+- JHipster (***Java Hipster***) có thể giúp bạn tạo các ứng dụng web đẹp mắt và các kiến trúc microservices phức tạp trong nháy mắt. JHipster cũng cung cấp các công cụ khác nhau để phát triển ứng dụng hơn nữa bằng cách sử dụng các thực thể kinh doanh và triển khai chúng cho các dịch vụ và nền tảng đám mây khác nhau. Về cốt lõi, JHipster là một trình tạo mã Yeoman tạo ra Spring Boot và Angular
 
-💬 **Áp dụng Angular vào jhipster**
+- Mục tiêu của JHipster là cung cấp cho các nhà phát triển một nền tảng nơi bạn có thể tập trung vào business logic của mình thay vì lo lắng về việc kết nối các công nghệ khác nhau với nhau và cũng là một nền tảng cung cấp trải nghiệm tuyệt vời cho nhà phát triển.
+
+💬 ***Cài đặt Jhipster*** 
+
+1. Cài đặt và cấu hình Java 11 : [AdoptOpenJDK builds](https://adoptopenjdk.net/) (***jdk-11.0.14.1+1***)
+2. Cài đặt Node.js từ [Node.js website](https://nodejs.org/) (***sử dụng phiên bản LTS 64-bit***)
+3. Cài đặt Jhipster (cmd): __`npm install -g generator-jhipster`__
+4. Cài đặt Yeoman (cmd): __`npm instal -g yo`__
+
+\
+💬 ***Khởi tạo dự án mới***
+
+Thực hiện trên cmd:
+
+1. Tạo thư mục lưu trữ dự án, gõ lệnh: __`mkdir Test`__
+2. Di chuyển vào thư mục vừa tạo, gõ lệnh: __`cd Test`__
+3. Tạo dự án mới, gõ lệnh: __`jhipster`__
+4. Sau đó trả lời những câu hỏi để tạo một ứng dụng phù hợp với nhu cầu.
+
+\
+![new-jhipster](..\HinhAnh\new-jhipster.png)
+
+
+
+>🚩 __Note:__ Đối với dự án có sẳn, cài đặt theo các sự lựa chọn sẳn có trong file __.yo-rc.json__ được đặt trong thư mục lưu trữ dự án.
+>
+>\
+>![folder](..\HinhAnh\exits-yo-rc.png)
+>
+> 1. Di chuyển vào thư mục: __`cd Test`__
+> 2. Gõ lệnh: __`jhipster`__
+> 3. Ứng dụng sẽ được tạo và bạn sẽ có một project mới.
+
+\
+\
+💬 ***Khởi chạy ứng dụng***
+
+- Vẫn ở tại project, gõ lệnh: __`gradlew`__ hoặc __`gradlew.bat`__
+- Quá trình có thể mất khá nhiều thời gian, do lần đầu thực hiện.
+- Ứng dụng sẽ hiển thị trên: `http://localhost:8080`
+
+\
+![App](..\HinhAnh\webapp-localhost.png)
+
+
+> ✨  _Để chuyển hướng trang đăng nhập_
+
+1. Mở file __`src\main\resources\config\application.yml`__:
+    * Tìm dòng: __`issuer-uri: http://localhost:9080/auth/realms/jhipster`__
+    * Đổi thành: __`issuer-uri: http://danquy.vnpthis.vn/auth/realms/bsgd`__ . Lưu lại
+
+\
+![url-login](..\HinhAnh\url-login.png)
+
+2. Mở cmd di chuyển đến thư mục lưu trữ dự án, gõ lệnh: `gradlew.bat`
+3. Ứng dụng hiển thị trên web: `http://localhost:8080`
+4. Trang đăng nhập mong muốn:
+
+\
+![login](..\HinhAnh\login.png)
+
+\
+\
+💬 ***Tạo entity và thêm file JDL và dự án***
+
+1. Tạo các entity trên [JDL-Studio](https://start.jhipster.tech/jdl-studio/), sau khi hoàn tất tải file về và lưu ở thư mục dự án
+2. Mở cmd tại đường dẫn thư mục của dự án, gõ lệnh: __`jhipster jdl <name>.jdl`__
+3. Quá trình build hoàn tất, tiếp tục gõ lệnh: __`gradlew.bat`__ để chạy lại ứng dụng web.
+4. Mở `http://localhost:8080`, đăng nhập, nhấp chọn __Entities__ sẽ hiện ra những bảng đã được import vào.
+
+\
+![entities](..\HinhAnh\entities.png)
+
+<br/>
+
+## **II. Áp dụng Angular vào jhipster**
+
+- Thư mục `src/main/java` sẽ chưa Java code.
+- Thư mục ***src/main/resources*** chứa các tài nguyên tĩnh và các file cấu hình.
+- Thư mục ***src/main/webapp*** là thư mục gốc cho giao diện người dùng.
+- Thư mục ***app*** chứa các modules AngularJs
+- Thư mục ***src/main/webapp/i18n*** chứa các file ngôn ngữ
+- Thư mục ***/src/main/webapp/app/entities*** chứa các bảng được import từ file JDL
+
