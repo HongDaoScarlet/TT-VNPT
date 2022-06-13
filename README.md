@@ -460,9 +460,9 @@ Thực hiện trên cmd:
 ## **II. Áp dụng Angular vào jhipster**
 
 - Thư mục `src/main/java` sẽ chưa Java code.
-- Thư mục ***src/main/resources*** chứa các tài nguyên tĩnh và các file cấu hình.
-- Thư mục ***src/main/webapp*** là thư mục gốc cho giao diện người dùng.
-- Thư mục ***app*** chứa các modules AngularJs
-- Thư mục ***src/main/webapp/i18n*** chứa các file ngôn ngữ
-- Thư mục ***/src/main/webapp/app/entities*** chứa các bảng được import từ file JDL
+- Thư mục `src/main/resources` chứa các tài nguyên tĩnh và các file cấu hình.
+- Thư mục `src/main/webapp` là thư mục gốc cho giao diện người dùng.
+- Thư mục `app` chứa các modules AngularJs
+- Thư mục `src/main/webapp/i18n` chứa các file ngôn ngữ
+- Thư mục `src/main/webapp/app/entities` chứa các bảng được import từ file JDL
 
