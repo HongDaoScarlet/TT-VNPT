@@ -284,43 +284,43 @@ ___
 ## **II. Sơ đồ lớp (Class diagram)**
 \
 \
-![Class](..\HinhAnh\ClassQuanLyBenhNhan.png)
+![ClassQuanLyBenhNhan](https://user-images.githubusercontent.com/106305844/173264222-a8dd3f5d-dbcf-4564-84e8-329842d86c89.png)
 <br/>
 <br/>
 
 ## **III. Sơ đồ tuần tự (Sequence Diagram)**
 ### ***1. Sơ đồ tuần tự chức năng Đăng nhập***
 \
-![Class](..\HinhAnh\dangNhap.png)
+![dangNhap](https://user-images.githubusercontent.com/106305844/173264227-010570b2-ab86-43dd-80e8-e958730b8218.png)
 
 
 ### ***2.	Sơ đồ tuần tự chức năng Quản lí tài khoản***
 \
-![Class](..\HinhAnh\quanLyTaiKhoan.png)
+![quanLyTaiKhoan](https://user-images.githubusercontent.com/106305844/173264244-75376912-a62d-438a-b9d4-b9766b48a17b.png)
 
 ### ***3.	Sơ đồ tuần tự chức năng Đăng kí hẹn khám***
 \
-![Class](..\HinhAnh\dangKiHenKham.png)
+![dangKiHenKham](https://user-images.githubusercontent.com/106305844/173264225-8bb39b3b-d093-4c70-a267-ea353b0f0fe1.png)
 
 ### ***4.	Sơ đồ tuần tự chức năng xem Lịch sử hẹn khám***
 \
-![Class](..\HinhAnh\xemLichSuHenKham.png)
+![xemLichSuHenKham](https://user-images.githubusercontent.com/106305844/173264219-c3bcca3c-74f6-4cd4-8912-c5dc7fcbd2e5.png)
 
 ### ***5.	Sơ đồ tuần tự chức năng Thống kê chi phí***
 \
-![Class](..\HinhAnh\thongKeChiPhi.png)
+![thongKeChiPhi](https://user-images.githubusercontent.com/106305844/173264245-b6ebdf6a-89c7-4cf5-bd01-edb77c25f7d6.png)
 
 ### ***6.	Sơ đồ tuần tự chức năng Quản lý khám chữa bệnh***
 \
-![Class](..\HinhAnh\quanLyKhamChuaBenh.png)
+![quanLyKhamChuaBenh](https://user-images.githubusercontent.com/106305844/173264243-dcf62fd2-eb51-4e38-b309-9d8079514e7b.png)
 
 ### ***7.	Sơ đồ tuần tự chức năng Tra cứu xét nghiệm***
 \
-![Class](..\HinhAnh\traCuuXetNghiem.png)
+![traCuuXetNghiem](https://user-images.githubusercontent.com/106305844/173264250-f18eabe1-24e6-4efb-b966-7433acce7ee3.png)
 
 ### ***8.	Sơ đồ tuần tự chức năng Tra cứu CĐHA***
 \
-![Class](..\HinhAnh\traCuuCDHA.png)
+![traCuuCDHA](https://user-images.githubusercontent.com/106305844/173264249-bde88b87-d519-46a3-9664-1dd59e369d44.png)
 
 
 ___
@@ -354,14 +354,14 @@ Thực hiện trên cmd:
 4. Sau đó trả lời những câu hỏi để tạo một ứng dụng phù hợp với nhu cầu.
 
 \
-![new-jhipster](..\HinhAnh\new-jhipster.png)
+![new-jhipster](https://user-images.githubusercontent.com/106305844/173264237-3e4a4e8e-52c6-4f4a-8a57-7e6b43b13637.png)
 
 
 
 >🚩 __Note:__ Đối với dự án có sẳn, cài đặt theo các sự lựa chọn sẳn có trong file __.yo-rc.json__ được đặt trong thư mục lưu trữ dự án.
 >
 >\
->![folder](..\HinhAnh\exits-yo-rc.png)
+>![exits-yo-rc](https://user-images.githubusercontent.com/106305844/173264229-f3c55272-be1c-48ac-8272-620c07c0e587.png)
 >
 > 1. Di chuyển vào thư mục: __`cd Test`__
 > 2. Gõ lệnh: __`jhipster`__
@@ -376,7 +376,7 @@ Thực hiện trên cmd:
 - Ứng dụng sẽ hiển thị trên: `http://localhost:8080`
 
 \
-![App](..\HinhAnh\webapp-localhost.png)
+![webapp-localhost](https://user-images.githubusercontent.com/106305844/173264216-658c9e27-dc25-4aa5-ba46-ce1415f85656.png)
 
 
 > ✨  _Để chuyển hướng trang đăng nhập_
@@ -386,14 +386,14 @@ Thực hiện trên cmd:
     * Đổi thành: __`issuer-uri: http://danquy.vnpthis.vn/auth/realms/bsgd`__ . Lưu lại
 
 \
-![url-login](..\HinhAnh\url-login.png)
+![url-login](https://user-images.githubusercontent.com/106305844/173264253-b7d1126f-d56f-4563-b86d-fa0d29027f2b.png)
 
 2. Mở cmd di chuyển đến thư mục lưu trữ dự án, gõ lệnh: `gradlew.bat`
 3. Ứng dụng hiển thị trên web: `http://localhost:8080`
 4. Trang đăng nhập mong muốn:
 
 \
-![login](..\HinhAnh\login.png)
+![login](https://user-images.githubusercontent.com/106305844/173264233-59883c96-a15d-471a-9844-58e83c1b59f1.png)
 
 \
 \
@@ -405,7 +405,7 @@ Thực hiện trên cmd:
 4. Mở `http://localhost:8080`, đăng nhập, nhấp chọn __Entities__ sẽ hiện ra những bảng đã được import vào.
 
 \
-![entities](..\HinhAnh\entities.png)
+![entities](https://user-images.githubusercontent.com/106305844/173264228-27685bae-92c5-4095-8553-ab053cec44f0.png)
 
 
 \
@@ -415,43 +415,42 @@ Thực hiện trên cmd:
 - Giao diện Danh mục bệnh nhân
 \
 \
-![benhnhan](..\HinhAnh\benh-nhan.png)
+![benh-nhan](https://user-images.githubusercontent.com/106305844/173264220-a7644275-1a8d-4886-be64-3c0dc3256063.png)
 
 
 - Giao diện Danh mục phiếu hẹn khám
 \
 \
-![phieuhenkham](..\HinhAnh\phieu-hen-kham.png)
-
+![phieu-hen-kham](https://user-images.githubusercontent.com/106305844/173264239-faa2e64c-451c-4b40-9d4f-2440066f3736.png)
 
 - Giao diện Danh mục hồ sơ bệnh án
 \
 \
-![hosobenhan](..\HinhAnh\ho-so-benh-an.png)
+![ho-so-benh-an](https://user-images.githubusercontent.com/106305844/173264230-51ce7a38-9055-410a-bf93-b88551938392.png)
 
 
 - Giao diện Danh mục thống kê chi phí
 \
 \
-![chiphi](..\HinhAnh\thong-ke-chi-phi.png)
+![thong-ke-chi-phi](https://user-images.githubusercontent.com/106305844/173264247-c28211bb-c07e-4f10-b998-541ea4e5e545.png)
 
 
 - Giao diện Danh mục thông tin khám chữa bệnh
 \
 \
-![khamchuabenh](..\HinhAnh\thong-tin-kcb.png)
+![thong-tin-kcb](https://user-images.githubusercontent.com/106305844/173264248-d7e7dd7f-e31c-41c1-a5bf-5b6ed05ddd9f.png)
 
 
 - Giao diện Danh mục phiếu xét nghiệm
 \
 \
-![xetnghiem](..\HinhAnh\phieu-xet-nghiem.png)
+![phieu-xet-nghiem](https://user-images.githubusercontent.com/106305844/173264242-22960850-b2b9-4bb6-bfa7-89ae1f5b6b57.png)
 
 
 - Giao diện Danh mục phiếu chuẩn đoán hình ảnh
 \
 \
-![cdha](..\HinhAnh\phieu-CDHA.png)
+![phieu-cdha](https://user-images.githubusercontent.com/106305844/173264238-7a5a8756-442c-49d8-aefa-9f744827f040.png)
 
 <br/>
 
