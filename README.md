@@ -13,7 +13,7 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
   vì vậy cứ yên tâm sử dụng.
   + Cộng đồng người dùng lớn nên nếu có thắc mắc gì cũng sẽ nhanh chóng được giải đáp.
   + Giúp phát triển Ứng dụng trang đơn (Single-page Application). Đây là ứng dụng chạy trên browser mà không bắt buộc phải tải lại trang khi sử dụng.
-:star2:
+
 ### **Câu 2: So sánh CSDL quan hệ và CSDL không quan hệ**
 | **Tiêu chí** | **Cơ sở dữ liệu quan hệ** | **Cơ sở dữ liệu không quan hệ** |
 |----------------|:---------------------:| :--------------------------:|
@@ -407,7 +407,55 @@ Thực hiện trên cmd:
 \
 ![entities](..\HinhAnh\entities.png)
 
+
+\
+\
+💬 ***Chỉnh sửa file tiếng Việt***
+
+- Giao diện Danh mục bệnh nhân
+\
+\
+![entities](..\HinhAnh\benh-nhan.png)
+
+
+- Giao diện Danh mục phiếu hẹn khám
+\
+\
+![entities](..\HinhAnh\phieu-hen-kham.png)
+
+
+- Giao diện Danh mục hồ sơ bệnh án
+\
+\
+![entities](..\HinhAnh\ho-so-benh-an.png)
+
+
+- Giao diện Danh mục thống kê chi phí
+\
+\
+![entities](..\HinhAnh\thong-ke-chi-phi.png)
+
+
+- Giao diện Danh mục thông tin khám chữa bệnh
+\
+\
+![entities](..\HinhAnh\thong-tin-kcb.png)
+
+
+- Giao diện Danh mục phiếu xét nghiệm
+\
+\
+![entities](..\HinhAnh\phieu-xet-nghiem.png)
+
+
+- Giao diện Danh mục phiếu chuẩn đoán hình ảnh
+\
+\
+![entities](..\HinhAnh\phieu-CDHA.png)
+
 <br/>
+
+
 
 ## **II. Áp dụng Angular vào jhipster**
 
