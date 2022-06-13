@@ -171,7 +171,7 @@ ___
 ## **I. Sơ đồ use case (Use case diagram)**
 \
 \
-![UseCaseBenhNhan](https://user-images.githubusercontent.com/106305844/173263979-1de7b6dc-6494-4204-8e83-8afd7347c9ad.png)
+![UseCaseBenhNhan](https://user-images.githubusercontent.com/106305844/173265349-43a72ff8-b8e0-4299-9138-8643a4d27861.png)
 \
 \
 💎  **Đặc tả use case**
