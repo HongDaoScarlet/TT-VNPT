@@ -171,7 +171,7 @@ ___
 ## **I. Sơ đồ use case (Use case diagram)**
 \
 \
-![Usecase](..\HinhAnh\UseCaseBenhNhan.png)
+![UseCaseBenhNhan](https://user-images.githubusercontent.com/106305844/173263979-1de7b6dc-6494-4204-8e83-8afd7347c9ad.png)
 \
 \
 💎  **Đặc tả use case**
@@ -415,43 +415,43 @@ Thực hiện trên cmd:
 - Giao diện Danh mục bệnh nhân
 \
 \
-![entities](..\HinhAnh\benh-nhan.png)
+![benhnhan](..\HinhAnh\benh-nhan.png)
 
 
 - Giao diện Danh mục phiếu hẹn khám
 \
 \
-![entities](..\HinhAnh\phieu-hen-kham.png)
+![phieuhenkham](..\HinhAnh\phieu-hen-kham.png)
 
 
 - Giao diện Danh mục hồ sơ bệnh án
 \
 \
-![entities](..\HinhAnh\ho-so-benh-an.png)
+![hosobenhan](..\HinhAnh\ho-so-benh-an.png)
 
 
 - Giao diện Danh mục thống kê chi phí
 \
 \
-![entities](..\HinhAnh\thong-ke-chi-phi.png)
+![chiphi](..\HinhAnh\thong-ke-chi-phi.png)
 
 
 - Giao diện Danh mục thông tin khám chữa bệnh
 \
 \
-![entities](..\HinhAnh\thong-tin-kcb.png)
+![khamchuabenh](..\HinhAnh\thong-tin-kcb.png)
 
 
 - Giao diện Danh mục phiếu xét nghiệm
 \
 \
-![entities](..\HinhAnh\phieu-xet-nghiem.png)
+![xetnghiem](..\HinhAnh\phieu-xet-nghiem.png)
 
 
 - Giao diện Danh mục phiếu chuẩn đoán hình ảnh
 \
 \
-![entities](..\HinhAnh\phieu-CDHA.png)
+![cdha](..\HinhAnh\phieu-CDHA.png)
 
 <br/>
 
