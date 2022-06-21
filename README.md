@@ -517,7 +517,7 @@ java/com/mycompany/myapp
 |	├── PhieuHenKhamService.java		
 |	├──
 ├── web									
-|	├── rest                          - Gói này chứa các lớp tài nguyên Spring cho REST API (dùng để giao tiếp giữa client và server)
+|	├── rest                                - Gói này chứa các lớp tài nguyên Spring cho REST API (dùng để giao tiếp giữa client và server)
 |		├── PhieuHenKhamResource.java	  - Chứa request và method của PhieuHenKham
 ```
 
