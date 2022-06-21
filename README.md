@@ -507,13 +507,13 @@ ___
 
 ```
 java/com/mycompany/myapp
-├── domain                              - Lưu các Models/ Entites (BenhNhan, PhieuHenKham,..)
-|	├── PhieuHenKham.java       - Class đại diện cho thực thể phiếu hẹn khám
+├── domain                                        - Lưu các Models/ Entites (BenhNhan, PhieuHenKham,..)
+|	├── PhieuHenKham.java                     - Class đại diện cho thực thể phiếu hẹn khám
 |	├── ...
-├──	repository							        - Chứa các kho lưu trữ dữ liệu trong spring cho các thực thể
+├──	repository                                    - Chứa các kho lưu trữ dữ liệu trong spring cho các thực thể
 |	├── PhieuHenKhamRepository.java           - Tương tác với cở sở dữ liệu để tìm, thêm, sửa, xóa một PhieuHenKham
 |	├── ...
-├── service                           - Dịch vụ quản lý các model/ thực thể (save, edit, ...)
+├── service                                       - Dịch vụ quản lý các model/ thực thể (save, edit, ...)
 |	├── PhieuHenKhamService.java		
 |	├──
 ├── web									
