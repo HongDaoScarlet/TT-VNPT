@@ -161,6 +161,7 @@ Frameworks này được xem là frameworks frontend mạnh mẽ nhất chuyên 
 - Scale hoàn toàn độc lập: Tùy thuộc vào nhu cầu sử dụng của hệ thống mà bạn có thể scale riêng cho service đó. Có thể như service đơn hàng mà sử dụng thường xuyên nên chạy từ 2 đến 3 server để gia tăng performance.
 
 ___
+<br/>
 
 # **📖 BÁO CÁO THỰC TẬP TUẦN 2**
 ✨✨✨ 
@@ -464,4 +465,204 @@ Thực hiện trên cmd:
 - Thư mục `app` chứa các modules AngularJs
 - Thư mục `src/main/webapp/i18n` chứa các file ngôn ngữ
 - Thư mục `src/main/webapp/app/entities` chứa các bảng được import từ file JDL
+
+
+___
+<br/>
+
+# **📖 BÁO CÁO THỰC TẬP TUẦN 4**
+✨✨✨
+
+>**Nhiệm Vụ**:
+>
+>- _Vẽ sơ đồ luồng các chức năng thêm, sửa, xóa phiếu hẹn khám_
+>- _Tìm hiểu cấu trúc thư mục trong jhipster và ý nghĩa của từng tập tin trong đó_
+
+
+\
+💬 ***Các sơ đồ luồng***
+
+- Sơ đồ luồng của chức năng **Thêm phiếu hẹn khám**
+
+\
+![FlowAddPhieuHenKham](https://user-images.githubusercontent.com/106305844/174708182-a995d311-4c13-4c2e-9e3c-e33a0df55716.png)
+
+- Sơ đồ luồng chức năng **Xóa phiếu hẹn khám**
+
+\
+![FlowDeletePhieuHenKham](https://user-images.githubusercontent.com/106305844/174708191-cc9c257a-5737-4f88-8cbb-f4e37bf61f95.png)
+
+- Sơ đồ luồng chức năng **Sửa phiếu hẹn khám**
+
+\
+![FlowEditPhieuHenKham](https://user-images.githubusercontent.com/106305844/174708193-fa8100cb-953f-4f99-91b6-8d0ed9fb649f.png)
+
+
+\
+💬 ***Mã nguồn java chính cho ứng dụng `src/main/java/com/mycompany/myapp`***
+
+\
+![cau-truc-source-java](https://user-images.githubusercontent.com/106305844/174707986-def2e99f-6837-47fb-9df4-868117b8f4b9.png)
+
+
+```
+java/com/mycompany/myapp
+├── domain								- Lưu các Models/ Entites (BenhNhan, PhieuHenKham,..)
+|	├── PhieuHenKham.java				- Class đại diện cho thực thể phiếu hẹn khám
+|	├── ...
+├──	repository							- Chứa các kho lưu trữ dữ liệu trong spring cho các thực thể
+|	├── PhieuHenKhamRepository.java		- Tương tác với cở sở dữ liệu để tìm, thêm, sửa, xóa một PhieuHenKham
+|	├── ...
+├── service								- Dịch vụ quản lý các model/ thực thể (save, edit, ...)
+|	├── PhieuHenKhamService.java		
+|	├──
+├── web									
+|	├── rest							- Gói này chứa các lớp tài nguyên Spring cho REST API (dùng để giao tiếp giữa client và server)
+|		├── PhieuHenKhamResource.java	- Chứa request và method của PhieuHenKham
+```
+
+💬 ***Cấu trúc Angular***
+
+\
+![cau-truc-angular](https://user-images.githubusercontent.com/106305844/174708263-ad609559-d52e-4b78-ad5e-8505f2f7fe56.png)
+
+\
+💬 **Ý nghĩa các file của chức năng Thêm phiếu hẹn khám**
+
+- Khi người dùng nhấn vào nút thêm phiếu hẹn tại trang Phiếu hẹn khám:
+
+\
+![angular-phieu-hen-kham](https://user-images.githubusercontent.com/106305844/174708290-75826dfb-debd-478e-8e35-dcb6cc31b7d6.png)
+
+\
+💫 ___phieu-hen-kham.component.html___ 💫
+
+- Là giao diện chính của **Quản lý Phiếu hẹn khám**. Tại đây giá trị của thuộc tính **`[routerLink]` là `['/phieu-hen-kham/new']`**, giá trị này sẽ là định tuyến làm đường dẫn cho các component.
+
+\
+![routeLink](https://user-images.githubusercontent.com/106305844/174708363-36132db7-0764-4a25-8de1-3278d6fc592f.png)
+
+\
+💫 ___phieu-hen-kham-routing.module.ts___ 💫
+ 
+- Là nơi mà các **Route** ứng dụng được khai báo. **Path** : Khai báo đường dẫn đến một component.
+- Đường dẫn **`[routerLink]="['/phieu-hen-kham/new']`** thì component PhieuHenKhamUpdateComponent sẽ được biểu diễn.
+
+\
+![route-new](https://user-images.githubusercontent.com/106305844/174708527-0addf84f-0fc3-4ad2-89c8-c015d746d577.png)
+
+\
+💫 ___phieu-hen-kham-update.component.html___ 💫
+
+- Là giao diện của from thêm mới phiếu hẹn.
+
+\
+![phieu-hen-kham-update-component-html](https://user-images.githubusercontent.com/106305844/174708569-e2a3ee0e-100d-42fc-8d61-af9e027105c7.png)
+
+- Người dùng nhập thông tin hẹn khám và nhấn lưu.
+- Tại **phieu-hen-kham-update.component.html** phương thức **(ngSubmit)="save()"**  sự kiện **save()** được thực thi khi người dùng ấn nút lưu.
+
+\
+![](../HinhAnh/nf.PNG)
+
+\
+💫 ___phieu-hen-kham-update.component.ts___ 💫
+
+- Nơi lưu trữ các hàm xử lý sự kiện.
+- Sự kiện **save()** để lưu thông tin đối tượng 
+- Thực hiện tạo mới, kiểm tra **`id`** truyền vào chưa tồn tại nên thực thi hàm **create(phieuHenKham)** có tham số là phieuHenKham.
+
+\
+![](../HinhAnh/111.PNG)
+
+\
+💫 ___phieu-hen-kham.service.ts___ 💫
+
+- Là file dịch vụ và phương thức cho chức năng phiếu hẹn khám
+- Hàm **create()** sử dụng phương thức **POST** và dịch vụ **HTTP** để khởi tạo 1 URL.
+
+\
+![](../HinhAnh/pt.PNG)
+
+\
+💫 ___PhieuHenKhamResource.java___ 💫
+
+- Là các bộ điều khiển REST để quản lý Phiếu Hẹn Khám
+- Có các phương thức đại diện cho các request (GET, POST, PUT, DELETE)
+- **`@RestController`** : chú thích xác định đây là lớp controller
+
+- Từ client gọi API của phương thức POST đã khởi tạo trước đó đến file `src\main\java\com\mycompany\myapp\web\rest\PhieuHenKhamResource.java`
+- **`@RequestMapping("/api")`** : chỉ định đường dẫn để biết là gửi request đến controller này để yêu cầu method.
+- **`@PostMapping("/phieu-hen-khams")`**: định tuyến method POST, sử dụng hàm `createPhieuHenKham()` để yêu cầu tạo một __PhieuHenKham__
+- **`phieuHenKhamService.save()`**: lưu lại đối tượng __PhieuHenKham__ vừa tạo
+- **`.created(new  URI("/api/phieu-hen-khams/"  +  result.getId())):`** tạo đường dẫn đến đối tượng __PhieuHenKham__ vừa tạo.
+
+\
+![phieu-hen-kham-resource](https://user-images.githubusercontent.com/106305844/174708714-9e6d1426-0a13-42b0-bcf0-30569e8d5958.png)
+
+> ⇒ Trả kết quả gọi đến **`@Repository`** để yêu cầu tạo thực thể __PhieuHenKham__
+
+\
+💫 ___PhieuHenKhamRepository.java___ 💫
+
+- Kho lưu trữ dữ liệu của thực thể **PhieuHenKham**
+- Chú thích **`@Repository`** xác định đây là kho lưu trữ và làm việc với dữ liệu
+
+- Gọi đến kho lưu trữ dữ liệu của PhieuHenKham **`src\main\java\com\mycompany\myapp\repository\PhieuHenKhamRepository.java`** để yêu cầu khởi tạo dữ liệu cho thực thể PhieuHenKham
+- Kế thừa từ **`JpaRepository`** cho phép thực hiện hoạt động ***thêm PhieuHenKham***
+
+\
+![phieu-hen-kham-repository](https://user-images.githubusercontent.com/106305844/174708741-991ae99b-7088-4c59-a54f-51132762e639.png)
+
+> ⇒ Thực hiện yêu cầu thêm mới một đối tượng **PhieuHenKham** thông qua lớp đại diện cho thực thể __PhieuHenKham__
+
+\
+💫 ___PhieuHenKham.java___ 💫
+
+- Thông qua lớp **`src\main\java\com\mycompany\myapp\domain\PhieuHenKham.java`** khởi tạo đối tượng PhieuHenKham
+- Đây là lớp đại diện cho thực thể **PhieuHenKham**
+- Có các chú thích (_annotation_)
+  + **`@Entity`** :  đánh dấu lớp này là thực thể,
+  + **`@Table(name  =  "phieu_hen_kham")`**:  ánh xạ đến bảng `phieu_hen_kham` trong cơ sở dữ liệu,
+  + **`@Cache(usage  =  CacheConcurrencyStrategy.READ_WRITE)`**:  khai báo entity có thể cache (cơ chế truy cập đồng thời),
+  + **`@Id`**: chú thích xác định khóa chính,
+  + **`@NotNull`,`@Column`**: xác định cột và cột không được rỗng.
+- Có các thuộc tính là các trường của thực thể, phương thức **set()** để thêm  giá trị của các trường và hàm xây dựng tạo đối tượng **PhieuHenKham**.
+
+\
+![phieu-hen-kham-entity](https://user-images.githubusercontent.com/106305844/174708756-ca01971d-3878-44f6-b37e-94fdc4bb38be.png)
+
+> ⇒ Tạo mới một đối tượng **PhieuHenKham** lưu vào bảng **`phieu_hen_kham`** trong cơ sở dữ liệu.
+
+
+\
+💫 ___phieu-hen-kham.component.ts___ 💫
+
+- Thực thi hàm **loadAll()** gọi hàm **query()** yêu cầu lấy thông tin Phiếu hẹn khám.
+
+\
+![loadAll](https://user-images.githubusercontent.com/106305844/174708791-803229cb-8440-40bc-8000-7242a397965e.png)
+
+\
+💫 ___phieu-hen-kham.service.ts___ 💫
+
+- Thực thi hàm **query()** với phương thức **get** và dịch vụ **HTTP** để tạo URL lấy thông tin Phiếu hẹn khám.
+
+\
+![angular-get](https://user-images.githubusercontent.com/106305844/174708816-1f287ea7-ba80-4fa9-9e2f-0edd51e1d188.png)
+
+\
+💫 ___PhieuHenKhamResource.java___ 💫
+
+- Hàm query() ở client tạo URL API của phương thức GET gọi đến file **`src\main\java\com\mycompany\myapp\web\rest\PhieuHenKhamResource.java`**
+- **`@RestController`** : chú thích xác định đây là lớp controller
+- **`@RequestMapping("/api")`** : chỉ định đường dẫn để biết là gửi request đến controller này để yêu cầu method.
+- **`@GetMapping("/phieu-hen-khams")`**: định tuyến method GET (theo cách hàm query() gọi, không có lấy tìm theo 'id'), thực thi hàm **`getAllPhieuHenKhams`** để yêu cầu lấy thông tin tất cả __PhieuHenKham__
+- **`phieuHenKhamService.findAll()`**: để tìm kiếm tất cả dữ liệu của __PhieuHenKham__
+
+\
+![phieu-hen-kham-resource-getmapping](https://user-images.githubusercontent.com/106305844/174708880-904a8a07-289a-43e2-b7ec-cbcb4427d3ae.png)
+
+> ⇒ Thông tin tìm được sẽ lưu thành một danh sách và phản hồi lại cho client.
+
 
