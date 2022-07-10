@@ -1343,7 +1343,7 @@ Xem chi phí khám chữa bệnh
 |7|Xóa trống __"Cơ Sở Khám"__|Thông báo trường bắt buộc nhập, nút **lưu** bị vô hiệu hóa|Như mong đợi|Fail||
 |8|Xóa trống __"Ngày hẹn"__|Thông báo trường bắt buộc nhập, nút **lưu** bị vô hiệu hóa|Như mong đợi|Fail||
 |9|Thay đổi nội dung cần sửa và không để trống 3 trường ở __bước 6, 7, 8__|Nút **lưu** hiển thị trở lại|Như mong đợi|Pass||
-|10|Nhấn nút __Lưu__|Thông báo thay đổi đã được lưu|Sửa đổi thông tin thành công||
+|10|Nhấn nút __Lưu__|Thông báo thay đổi đã được lưu|Sửa đổi thông tin thành công|Pass||
 
 ### 💫 ___5. Kiểm thử chức năng Xóa phiếu hẹn khám___ 💫
 
