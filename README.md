@@ -1183,3 +1183,201 @@ Swagger cung cấp 3 tools chính cho các developers :
 \
 ![InterfaceCDHA](https://user-images.githubusercontent.com/106305844/178146841-4ba38f40-3c40-4868-a29d-2fdef585b628.png)
 
+
+___
+
+# **📖 BÁO CÁO THỰC TẬP TUẦN 7**
+✨✨✨
+
+>**Nhiệm Vụ**:
+>
+>- _Tiếp tục hoàn thiện các chức năng_
+>- _Viết test case_
+
+
+## **I. Công việc hoàn thiện giao diện, chức năng**
+
+### **1 :Giao diện Thông tin bệnh nhân**
+
+\
+![ResultTTBN](https://user-images.githubusercontent.com/106305844/178147382-b0c072a3-b529-4dab-b592-5225d54f0d34.png)
+
+Hoàn thiện giao diện xem thông tin bệnh nhân . Thông tin bệnh nhân được với mỗi tài khoản mỗi bệnh nhân theo tài khoản được đăng kí. Sửa thông tin bệnh nhân.
+
+### **2 :Giao diện đăng kí hẹn khám**
+
+\
+![ResultDKHK](https://user-images.githubusercontent.com/106305844/178147384-d7bdbbaa-a82d-4374-8087-cd5a598d3c52.png)
+
+Bệnh nhân có thể đăng kí hẹn khám trước với bệnh viện. Các trường có dấu * là bắt buộc không được để trống
+
+### **3 :Giao diện Lịch sử hẹn khám**
+
+\
+![ResultLSDKHK](https://user-images.githubusercontent.com/106305844/178147386-a4428fd3-a115-47be-b6d6-88113c159631.png)
+
+Bệnh nhân có thể xem lại lịch sử đăng kí hẹn khám. Có thể sửa hoặc xóa phiếu hẹn khám.
+
+### **4 : Giao diện Lịch sử khám/điều trị**
+
+\
+![ResultLSKDT](https://user-images.githubusercontent.com/106305844/178147388-51476fdc-600f-4d18-b1fa-fef72d53543c.png)
+
+- Bệnh nhân xem được lịch sử khám và điều trị của mình, xem chi tiết hồ sơ bệnh án.
+- Bệnh nhân có thể nhập mã vào ô **Mã bệnh án** và ấn nút tìm kiếm để tìm hồ sơ bệnh án.
+- Nếu ô tìm kiếm trống mà ấn nút ___Tìm kiếm___ thì sẽ hiện ra toàn bộ danh sách bệnh án của bệnh nhân.
+
+### **5: Giao diện thống kê chi phí**
+
+\
+![ResultTKCP](https://user-images.githubusercontent.com/106305844/178147391-901d9f28-a2f6-4487-ae1f-ab2833dab1ec.png)
+
+Xem chi phí khám chữa bệnh
+
+
+### **6 :Giao diện tra cứu xét nghiệm**
+
+\
+![ResultTCXN](https://user-images.githubusercontent.com/106305844/178147390-20743f07-3c34-4654-aa4b-22abac5e08c3.png)
+
+- Bệnh nhân xem được phiếu xét nghiệm của mình, xem chi tiết phiếu.
+- Bệnh nhân có thể nhập mã vào ô **Mã phiếu** và ấn nút tìm kiếm để tìm phiếu xét nghiệm.
+- Nếu ô tìm kiếm trống mà ấn nút ___Tìm kiếm___ thì sẽ hiện ra toàn bộ danh sách phiếu xét nghiệm của bệnh nhân.
+
+### **7 :Giao diện tra cứu CDHA**
+
+\
+![ResultCDHA](https://user-images.githubusercontent.com/106305844/178147383-c6465364-77be-460c-858c-024e5ff380a6.png)
+
+- Bệnh nhân xem được phiếu chuẩn đoán hình ảnh của mình, xem chi tiết phiếu.
+- Bệnh nhân có thể nhập mã vào ô **Mã phiếu** và ấn nút tìm kiếm để tìm phiếu chuẩn đoán hình ảnh.
+- Nếu ô tìm kiếm trống mà ấn nút ___Tìm kiếm___ thì sẽ hiện ra toàn bộ danh sách phiếu chuẩn đoán hình ảnh của bệnh nhân.
+
+
+## **II. Kiểm thử chức năng (Test case)**
+
+<br/>
+
+> **Note:** Các chức năng được kiểm thử với tiền điều kiện là đã đăng nhập với tài khoản bệnh nhân thành công.
+
+
+### 💫 ___1. Kiểm thử chức năng Xem thông tin cá nhân___ 💫
+
+| **Tên trường** | **Giá trị** |
+|------:|:-----|
+| Test Case ID: | TC_BN_001 |
+| Test Title: | Kiểm tra hiển thị thông tin một bệnh nhân |
+| Description: | Lấy đúng dữ liệu của bệnh nhân được lưu và hiển thị ra thông tin |
+
+<br/>
+
+| **Bước** | **Bước kiểm thử** | **Kết quả mong đợi** | **Kết quả thực tế** | **Trạng thái (Pass/Fail)** | **Ngày kiểm thử** |
+|:-----:|:-----|:-----|:-----|:-----|:-----|
+|1|Vào trang chủ|Thành công vào trang chủ|Như mong đợi|Pass||
+|2|Chọn menu chứ năng ___Thông tin bệnh nhân___|Hiển thị thông tin bệnh nhân|Như mong đợi|Pass||
+
+### 💫 ___2. Kiểm thử chức năng Sửa thông tin cá nhân___ 💫
+
+| **Tên trường** | **Giá trị** |
+|------:|:-----|
+| Test Case ID: | TC_BN_002 |
+| Test Title: | Kiểm tra sửa đổi thông tin một bệnh nhân |
+| Description: | Cập nhật lại thông tin bệnh nhân |
+
+<br/>
+
+| **Bước** | **Bước kiểm thử** | **Kết quả mong đợi** | **Kết quả thực tế** | **Trạng thái (Pass/Fail)** | **Ngày kiểm thử** |
+|:-----:|:-----|:-----|:-----|:-----|:-----|
+|1|Vào trang chủ|Thành công vào trang chủ|Như mong đợi|Pass||
+|2|Chọn menu chứ năng ___Thông tin bệnh nhân___|Hiển thị thông tin bệnh nhân|Như mong đợi|Pass||
+|3|Chọn nút ___Sửa thông tin___|Hiển thị form sửa thông tin|Như mong đợi|Pass||
+|4|Nhấn nút __Hủy__|Quay lại trang thông tin|Như mong đợi|Pass||
+|5|Chọn nút ___Sửa thông tin___|Hiển thị form sửa thông tin|Như mong đợi|Pass||
+|6|Nhập dữ liệu trường ID|Không thể nhập|Như mong đợi|Pass||
+|7|Để trống trường __"Họ Tên"__|Nút lưu bị vô hiệu hóa|Như mong đợi|Fail||
+|8|Nhập chữ cái, hoặc để trống tại trường __"Ngày Sinh"__`|Nút lưu bị vô hiệu hóa|Như mong đợi|Fail||
+|9|Đầy đủ trường cần thay đổi và đúng kiểu dữ liệu|Có thể nhập và nút lưu được tác động|Như mong đợi|Pass||
+|10|Nhấn nút __Lưu__|Thông báo thông tin đã được cập nhật|Pass||
+
+
+### 💫 ___3. Kiểm thử chức năng Đăng kí hẹn khám___ 💫
+
+| **Tên trường** | **Giá trị** |
+|------:|:-----|
+| Test Case ID: | TC_BN_003 |
+| Test Title: | Đăng kí hẹn khám |
+| Description: | Kiểm tra việc thêm mới một phiếu hẹn khám |
+
+<br/>
+
+| **Bước** | **Bước kiểm thử** | **Kết quả mong đợi** | **Kết quả thực tế** |**Trạng thái**| **Ngày kiểm thử** |
+|:-----:|:-----|:-----|:-----|:-----|:-----|
+|1|Vào trang chủ|Thành công vào trang chủ|Như mong đợi|Pass||
+|2|Chọn chức năng ___Đăng ký hẹn khám___|Hiển thị form Đăng ký hẹn khám|Như mong đợi|Pass||
+|2|Click nút __Hủy__|Quay lại trang trước đó|Như mong đợi|Pass||
+|3|Chọn chức năng ___Đăng ký hẹn khám___|Hiển thị form Đăng ký hẹn khám|Như mong đợi|Pass||
+|4|Để trống __"Loại khám"__|Nút lưu không tác động được|Như mong đợi|Fail||
+|5|Để trống __"Cơ sở khám"__|Nút lưu không tác động được|Như mong đợi|Fail||
+|6|Để trống __"Ngày hẹn"__|Nút lưu không tác động được|Như mong đợi|Fail||
+|7|Nhập "Loại Khám" -> Nhập "Cơ Sở Khám" -> Chọn Ngày hẹn -> Nhập tên "Bác sĩ" (có thể bỏ trống) -> Nhập "Nội dung" (có thể bỏ trống)|Nhập được thông tin, đúng kiểu, nút lưu có thể tác động|Như mong đợi|Pass||
+|4|Click nút __Lưu__|Hiển thị ra thông báo đăng ký thành công|- Đăng kí thành công phiếu hẹn khám|Pass||
+
+### 💫 ___4. Kiểm thử chức năng Sửa phiếu hẹn khám___ 💫
+
+| **Tên trường** | **Giá trị** |
+|------:|:-----|
+| Test Case ID: | TC_BN_004 |
+| Test Title: | Sửa thông tin hẹn khám |
+| Description: | Kiểm tra việc cập nhật một phiếu hẹn khám |
+
+<br/>
+
+| **Bước** | **Bước kiểm thử** | **Kết quả mong đợi** | **Kết quả thực tế** | **Trạng Thái** | **Ngày kiểm thử** |
+|:-----:|:-----|:-----|:-----|:-----|:-----|
+|1|Vào trang chủ|Vào trang chủ thành công|Như mong đợi|Pass||
+|2|Chọn chức năng ___Lịch sử hẹn khám___|Hiển thị danh sách phiếu hẹn khám của bệnh nhân|Như mong đợi|Pass||
+|3|Nhấp chọn nút ___Sửa___ của một phiếu hẹn khám|Hiển thị form cập nhật, có các dữ liệu của phiếu cần sửa|Như mong đợi|Pass||
+|4|Nhấn nút __Hủy__|Không thực hiện sửa đổi và quay lại trang ___Lịch sử hẹn khám___|Quay lại trang hiển thị danh sách lịch sử hẹn khám|Pass||
+|5|Thực hiện lại **Bước 3**|Hiển thị form cập nhật, có các dữ liệu của phiếu cần sửa|Như mong đợi|Pass||
+|6|Xóa trống __"Loại Khám"__|Thông báo trường bắt buộc nhập, nút **lưu** bị vô hiệu hóa|Như mong đợi|Fail||
+|7|Xóa trống __"Cơ Sở Khám"__|Thông báo trường bắt buộc nhập, nút **lưu** bị vô hiệu hóa|Như mong đợi|Fail||
+|8|Xóa trống __"Ngày hẹn"__|Thông báo trường bắt buộc nhập, nút **lưu** bị vô hiệu hóa|Như mong đợi|Fail||
+|9|Thay đổi nội dung cần sửa và không để trống 3 trường ở __bước 6, 7, 8__|Nút **lưu** hiển thị trở lại|Như mong đợi|Pass|v|
+|10|Nhấn nút __Lưu__|Thông báo thay đổi đã được lưu|Sửa đổi thông tin thành công||
+
+### 💫 ___5. Kiểm thử chức năng Xóa phiếu hẹn khám___ 💫
+
+| **Tên trường** | **Giá trị** |
+|------:|:-----|
+| Test Case ID: | TC_BN_005 |
+| Test Title: | Xóa phiếu hẹn khám |
+| Description: | Kiểm tra việc xóa một phiếu hẹn khám |
+
+<br/>
+
+| **Bước** | **Bước kiểm thử** | **Kết quả mong đợi** | **Kết quả thực tế** | **Trạng thái** | **Ngày kiểm thử** |
+|:-----:|:-----|:-----|:-----|:-----|:-----|
+|1|Vào trang chủ|Vào trang chủ thành công|Như mong đợi|Pass||
+|2|Chọn chức năng ___Lịch sử hẹn khám___|Hiển thị danh sách phiếu hẹn khám của bệnh nhân|Như mong đợi|Pass||
+|3|Nhấp chọn nút ___Xóa___ của một phiếu hẹn khám:<br/> - Xác nhận xóa -->  __bước 4__ <br/> - Không thực hiện xóa --> __bước 5__|Hiển thị hộp thoại thông báo xác nhận xóa|Như mong đợi|Pass||
+|4|Nhấn nút __Xóa__|Xóa và hiển thị ra thông báo xóa thành công, tắt hộp thoại và hiển thị lại danh sách sau khi xóa|Như mong đợi|Pass||
+|5|Nhấn nút __Hủy__|Tắt hộp thoại và không thực hiện xóa |Như mong đợi|Pass||
+
+
+### 💫 ___6. Kiểm thử chức năng Tìm kiếm lịch sử khám điều trị___ 💫
+
+| **Tên trường** | **Giá trị** |
+|------:|:-----|
+| Test Case ID: | TC_BN_006 |
+| Test Title: | Tìm kiếm lịch sử khám điều trị |
+| Description: | Kiểm tra việc tìm kiếm một bệnh án của bệnh nhân |
+
+<br/>
+
+| **Bước** | **Bước kiểm thử** | **Kết quả mong đợi** | **Kết quả thực tế** | **Trang thái** | **Ngày kiểm thử** |
+|:-----:|:-----|:-----|:-----|:-----|:-----|
+|1|Vào trang chủ|Vào trang chủ thành công|Như mong đợi|Pass||
+|2|Chọn chức năng ___Lịch sử khám điều trị___|Hiển thị form tìm kiếm và danh sách bệnh án|Như mong đợi|Pass||
+|3|- Tại form tìm kiếm nhập __`Mã Bệnh Án`__ --> __Bước 4__<br/> - Không nhập thông tin tìm kiếm --> __Bước 5__|- Nhập được dữ liệu vào textbox<br/> - Textbox rỗng |Như mong đợi|Pass||
+|4|Nhấn nút __Tìm kiếm__|- Có kết quả phù hợp: hiển thị ra hồ sơ bệnh án tìm được<br/> - Không có kết quả phù hợp: hiển thị ra thông báo __`không tìm thấy`__|Như mong đợi|Pass||
+|5|Nhấn nút __Tìm kiếm__ khi ô nhập sữ liệu rỗng|Hiển thị toàn bộ danh sách Hồ sơ bệnh án của bênh nhân|Như mong đợi|Pass||
