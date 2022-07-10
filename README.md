@@ -666,3 +666,520 @@ java/com/mycompany/myapp
 > ⇒ Thông tin tìm được sẽ lưu thành một danh sách và phản hồi lại cho client.
 
 
+___
+<br/>
+
+# **📖 BÁO CÁO THỰC TẬP TUẦN 5, 6**
+✨✨✨
+
+## **1. Domain**
+
+💫 ___PhieuHenKham.java___ 💫
+
+```java
+@Entity
+@Table(name = "phieu_hen_kham")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class PhieuHenKham implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "id")
+    private Long id;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "loai_kham", nullable = false)
+    private LoaiKham loaiKham;
+
+    @NotNull
+    @Column(name = "ngay_hen", nullable = false)
+    private Instant ngayHen;
+
+    @NotNull
+    @Column(name = "co_so_kham", nullable = false)
+    private String coSoKham;
+
+    @Column(name = "bac_si")
+    private String bacSi;
+
+    @Column(name = "noi_dung")
+    private String noiDung;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "phieuHenKhams", "hoSoBenhAns" }, allowSetters = true)
+    private BenhNhan benhnhan;
+
+    //Getter, setter...
+```
+
+- Một __`@Entity`__ (domain) là nơi ánh xạ của một bảng (__PhieuHenKham__) từ cơ sở dữ liệu vào Java, với __`@Table(name = "phieu_hen_kham")`__ là tên của bảng được ánh xạ.
+- Các annotation (chú thích):
+  + __`@Id`__ định nghĩa trường id tương ứng với cơ sơ dữ liệu và gán giá trị __`@GeneratedValue`__ tự động tăng cho trường id đó.
+  + __`@Column(name = "tencotdb")`__ tên cột của DB được ánh xạ tương ứng với tên trong Java. Thuộc tính ___`nullable = false`___ và __`@NotNull`__ không cho phép giá trị của cột đó Null.
+  + __`@Enumerated(EnumType.STRING)`__ chú thích trường này sẽ sử dụng một enum đã được định nghĩa sẳn làm giá trị, và giá trị đó có kiểu String.
+- Mối quan hệ __`@ManyToOne`__, khóa ngoại sẽ được thể hiện thông qua việc entity __PhieuHenKham__ chứa entity __BenhNhan__. Có nghĩa là bảng _phieu-hen-kham_ có chứa khóa ngoại được tham chiếu từ bảng _benhnhan_.
+- __`@JsonIgnoreProperties`__ đánh dấu thuộc tính sẽ bị bỏ qua trong quá trình biên dịch khởi tạo và gán giá trị (___phieuHenKhams, hoSoBenhAns___).
+- Có các __`getter`__ và __`setter`__ để tương tác với các thuộc tính private nhằm đảm bảo tính đóng gói(1) của OOP, tránh tình trạng dữ liệu hư hỏng ngoài ý muốn.
+
+> __Tính đóng gói (Encapsulation):__ cho phép private các thuộc tính bên trong đối tượng, đối tượng khác chỉ có thể tác động đến các thuộc tính đó thông qua các phương thức public đã được chính đối tượng đó định nghĩa.
+
+
+## **2. Repository**
+
+💫 ___PhieuHenKhamRepository.java___ 💫
+
+```java
+/**
+ * Spring Data SQL repository for the PhieuHenKham entity.
+ */
+@SuppressWarnings("unused")
+@Repository
+public interface PhieuHenKhamRepository extends JpaRepository<PhieuHenKham, Long>, JpaSpecificationExecutor<PhieuHenKham> {}
+
+```
+- Repository là một interface được định nghĩa __`@Repository`__, là nơi lưu trữ  và truy xuất dữ liệu giữa cơ sở dữ liệu và entity (ở đây là __PhieuHenKham__).
+- Là một lớp interface kế thừa từ __`JpaRepository`__ cho phép thực hiện các __CRUD__ (create, read, update, delete) cơ bản.
+- Hỗ trợ tạo các query từ các method của JPA, ví dụ:
+
+```java
+Optional<PhieuHenKham> findByBenhNhan(BenhNhan benhNhan)
+```
+
+==> Được hiểu như:
+\
+__`select * from PhieuHenKham phk where phk.BenhNhan = benhNhan`__ 
+
+> 🚩 Nếu dữ liệu trả về có thể là duy nhất hoặc không tồn tại thì hứng bằng __Optional__.
+
+
+## **3. DTO**
+
+- __DTO (Data Transfer Object):__ là các class đóng gói data để chuyển giữa client - server hoặc giữa các service trong microservice.
+- Mục đích tạo ra DTO là để giảm bớt lượng thông tin không cần thiết phải chuyển đi, chỉ gửi đi những gì mà người dùng yêu cầu, nhằm ___tăng cường độ bảo mật___.
+- Việc tạo ra một lớp DTO có thể có hoặc không thông qua việc khai báo DTO trong file __`tenjdl.jdl`__
+```
+dto all with mapstruct (với all là tất cả entity)
+```
+- DTO tương ứng với entity, nhưng khác ở chỗ khóa ngoại sẽ không phải tên của entity làm khóa ngoại, mà thay bằng tên trường id của entity khóa ngoại đó. Sẽ không còn là các entity lồng nhau nữa.
+
+💫 ___PhieuHenKhamDTO.java___ 💫
+
+```java
+...
+
+/**
+* Mã bệnh nhân
+*/
+@ApiModelProperty(value = "Mã bệnh nhân")
+private Long benhNhanId;
+
+...
+```
+- Repository của Spring sẽ hiểu được các khóa ngoại id này thông qua __Mapper__
+
+## **4. Mapper(Mapstruct)**
+
+- __Mapstruct__ là một interface thường dùng để map các thuộc tính của các object lại với nhau
+- Nếu sử dụng DTO thì sử dụng mapper để map thuộc tính của entity và DTO của entity đó.
+
+
+## **5. Criteria**
+
+- __Criteria__ là 1 class sử dụng thư viện criteria do jhipster hỗ trợ. Các thuộc tính sẽ tương ứng với các thuộc tính trong DTO nhưng kiểu dữ liệu sẽ kèm theo Filer ví dụ: __`Long = LongFilter`__
+- Các filter này sẽ hỗ trợ việc lọc theo một hoặc nhiều điều kiện được thuận tiện dễ dàng hơn. Như `equals, contains(LongFilter)...` các thuộc tính này sẽ được sử dụng trong phần __`createSpecification`__ ở trong __PhieuHenKhamQueryService__
+
+💫 ___PhieuHenKhamCriteria.java___ 💫
+
+```java
+public class PhieuHenKhamCriteria implements Serializable, Criteria {
+
+private static final long serialVersionUID = 1L;
+
+    private LongFilter id;
+
+    private LoaiKhamFilter loaiKham;
+
+    private InstantFilter ngayHen;
+
+    private StringFilter coSoKham;
+
+    private StringFilter bacSi;
+
+    private StringFilter noiDung;
+
+    private LongFilter benhnhanId;
+
+    private Boolean distinct;
+
+    public PhieuHenKhamCriteria() {}
+
+    public PhieuHenKhamCriteria(PhieuHenKhamCriteria other) {
+        this.id = other.id == null ? null : other.id.copy();
+        this.loaiKham = other.loaiKham == null ? null : other.loaiKham.copy();
+        this.ngayHen = other.ngayHen == null ? null : other.ngayHen.copy();
+        this.coSoKham = other.coSoKham == null ? null : other.coSoKham.copy();
+        this.bacSi = other.bacSi == null ? null : other.bacSi.copy();
+        this.noiDung = other.noiDung == null ? null : other.noiDung.copy();
+        this.benhnhanId = other.benhnhanId == null ? null : other.benhnhanId.copy();
+        this.distinct = other.distinct;
+    }
+
+}
+```
+
+## **6. QueryService**
+
+- Trong QueryService sẽ có một hàm __`createSpecification`__, Specification là phần điều kiện phía sau `where` trong query.
+- `Specification<PhieuHenKham>` sẽ được sử dụng trong `Repository` với hàm  `findAll()`.
+
+💫 ___PhieuHenKhamQueryService.java___ 💫
+
+```java
+public class PhieuHenKhamQueryService extends QueryService<PhieuHenKham> {
+
+protected Specification<PhieuHenKham> createSpecification(PhieuHenKhamCriteria criteria) {
+        Specification<PhieuHenKham> specification = Specification.where(null);
+        if (criteria != null) {
+            // This has to be called first, because the distinct method returns null
+            if (criteria.getDistinct() != null) {
+                specification = specification.and(distinct(criteria.getDistinct()));
+            }
+            if (criteria.getId() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getId(), PhieuHenKham_.id));
+            }
+            if (criteria.getLoaiKham() != null) {
+                specification = specification.and(buildSpecification(criteria.getLoaiKham(), PhieuHenKham_.loaiKham));
+            }
+            if (criteria.getNgayHen() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getNgayHen(), PhieuHenKham_.ngayHen));
+            }
+            if (criteria.getCoSoKham() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getCoSoKham(), PhieuHenKham_.coSoKham));
+            }
+            if (criteria.getBacSi() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getBacSi(), PhieuHenKham_.bacSi));
+            }
+            if (criteria.getNoiDung() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getNoiDung(), PhieuHenKham_.noiDung));
+            }
+            if (criteria.getBenhnhanId() != null) {
+                specification =
+                    specification.and(
+                        buildSpecification(
+                            criteria.getBenhnhanId(),
+                            root -> root.join(PhieuHenKham_.benhnhan, JoinType.LEFT).get(BenhNhan_.id)
+                        )
+                    );
+            }
+        }
+        return specification;
+    }
+
+}
+```
+
+## **7. Service**
+
+- Quản lý dịch vụ thêm, sửa, xóa, tìm kiếm.
+  + **save()**: dấu chú thích nội dung `@param` và `@return`, có tác dụng chú thích dữ liệu được lấy ở đâu và trả về ở đâu.
+  + **update()**: cập nhật một ___`PhieuHenKham`___
+  + **findAll()**: tìm tất cả phieuHenKham, trả về 1 danh sách lưu trong giao diện phân trang
+  + **findOne()**: tìm 1 phieuHenKham theo id, **`Optional`** cho phép nhận kết quả trả về null nếu như id đó không tồn tại.
+  
+
+💫 ___PhieuHenKhamService.java___ 💫
+
+```java
+public interface PhieuHenKhamService {
+    /**
+     * Save a phieuHenKham.
+     *
+     * @param phieuHenKham the entity to save.
+     * @return the persisted entity.
+     */
+    PhieuHenKham save(PhieuHenKham phieuHenKham);
+
+    /**
+     * Updates a phieuHenKham.
+     *
+     * @param phieuHenKham the entity to update.
+     * @return the persisted entity.
+     */
+    PhieuHenKham update(PhieuHenKham phieuHenKham);
+
+    /**
+     * Partially updates a phieuHenKham.
+     *
+     * @param phieuHenKham the entity to update partially.
+     * @return the persisted entity.
+     */
+    Optional<PhieuHenKham> partialUpdate(PhieuHenKham phieuHenKham);
+
+    /**
+     * Get all the phieuHenKhams.
+     *
+     * @param pageable the pagination information.
+     * @return the list of entities.
+     */
+    Page<PhieuHenKham> findAll(Pageable pageable);
+
+    /**
+     * Get the "id" phieuHenKham.
+     *
+     * @param id the id of the entity.
+     * @return the entity.
+     */
+    Optional<PhieuHenKham> findOne(Long id);
+
+    /**
+     * Delete the "id" phieuHenKham.
+     *
+     * @param id the id of the entity.
+     */
+    void delete(Long id);
+}
+```
+
+## **8. ServiceImpl**
+
+- Thực hiện các nghiệp vụ thêm, sửa, xóa.
+- **`@Service`** : đánh dấu lớp phục vụ cho các logic nghiệp vụ.
+- **`@Transactional`** : đánh dấu một giao dịch, để khi thực hiện xảy ra lỗi thì transaction này sẽ rollback lại để bảo toàn dữ liệu
+- **`@Override`** : ghi đè dữ liệu
+- **`PhieuHenKham save()`** : lưu trữ dữ liệu của phieuHenKham
+
+💫 ___PhieuHenKhamServiceImpl.java___ 💫
+
+```java
+@Service
+@Transactional
+public class PhieuHenKhamServiceImpl implements PhieuHenKhamService {
+
+public PhieuHenKhamServiceImpl(PhieuHenKhamRepository phieuHenKhamRepository) {
+        this.phieuHenKhamRepository = phieuHenKhamRepository;
+    }
+
+    @Override
+    public PhieuHenKham save(PhieuHenKham phieuHenKham) {
+        log.debug("Request to save PhieuHenKham : {}", phieuHenKham);
+        return phieuHenKhamRepository.save(phieuHenKham);
+    }
+
+    @Override
+    public PhieuHenKham update(PhieuHenKham phieuHenKham) {
+        log.debug("Request to save PhieuHenKham : {}", phieuHenKham);
+        return phieuHenKhamRepository.save(phieuHenKham);
+    }
+
+    @Override
+    public Optional<PhieuHenKham> partialUpdate(PhieuHenKham phieuHenKham) {
+        log.debug("Request to partially update PhieuHenKham : {}", phieuHenKham);
+
+        return phieuHenKhamRepository
+            .findById(phieuHenKham.getId())
+            .map(existingPhieuHenKham -> {
+                if (phieuHenKham.getLoaiKham() != null) {
+                    existingPhieuHenKham.setLoaiKham(phieuHenKham.getLoaiKham());
+                }
+                if (phieuHenKham.getNgayHen() != null) {
+                    existingPhieuHenKham.setNgayHen(phieuHenKham.getNgayHen());
+                }
+                if (phieuHenKham.getCoSoKham() != null) {
+                    existingPhieuHenKham.setCoSoKham(phieuHenKham.getCoSoKham());
+                }
+                if (phieuHenKham.getBacSi() != null) {
+                    existingPhieuHenKham.setBacSi(phieuHenKham.getBacSi());
+                }
+                if (phieuHenKham.getNoiDung() != null) {
+                    existingPhieuHenKham.setNoiDung(phieuHenKham.getNoiDung());
+                }
+
+                return existingPhieuHenKham;
+            })
+            .map(phieuHenKhamRepository::save);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<PhieuHenKham> findAll(Pageable pageable) {
+        log.debug("Request to get all PhieuHenKhams");
+        return phieuHenKhamRepository.findAll(pageable);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<PhieuHenKham> findOne(Long id) {
+        log.debug("Request to get PhieuHenKham : {}", id);
+        return phieuHenKhamRepository.findById(id);
+    }
+
+    @Override
+    public void delete(Long id) {
+        log.debug("Request to delete PhieuHenKham : {}", id);
+        phieuHenKhamRepository.deleteById(id);
+    }
+
+}
+
+```
+
+## **9. Resource (Controller)**
+
+- **`@RestController`**: đánh dấu lớp chứa các bộ điều khiển REST để quản lý PhieuHenKham.
+- Có các phương thức đại diện cho các request (GET, POST, PUT, DELETE).
+- **`@RequestMapping("/api")`** : đinh tuyến đường dẫn chung đến lớp thực hiện các request.
+- **`@PostMapping("/phieu-hen-khams")`**: định tuyến sử dụng phương thức POST áp dụng cho __phieu-hen-khams__
+- **`@PutMapping("/phieu-hen-khams/{id}")`**: định tuyến sử dụng phương thức PUT áp dụng cho __phieu-hen-khams__ với __`id`__ được truyền vào 
+
+
+💫 __PhieuHenKhamResource.java__ 💫
+
+```java
+@RestController
+@RequestMapping("/api")
+public class PhieuHenKhamResource {
+
+    private final Logger log = LoggerFactory.getLogger(PhieuHenKhamResource.class);
+
+    private static final String ENTITY_NAME = "phieuHenKham";
+
+    @Value("${jhipster.clientApp.name}")
+    private String applicationName;
+
+    private final PhieuHenKhamService phieuHenKhamService;
+
+    private final PhieuHenKhamRepository phieuHenKhamRepository;
+
+    private final PhieuHenKhamQueryService phieuHenKhamQueryService;
+
+    public PhieuHenKhamResource(
+        PhieuHenKhamService phieuHenKhamService,
+        PhieuHenKhamRepository phieuHenKhamRepository,
+        PhieuHenKhamQueryService phieuHenKhamQueryService
+    ) {
+        this.phieuHenKhamService = phieuHenKhamService;
+        this.phieuHenKhamRepository = phieuHenKhamRepository;
+        this.phieuHenKhamQueryService = phieuHenKhamQueryService;
+    }
+
+    /**
+     * {@code POST  /phieu-hen-khams} : Create a new phieuHenKham.
+     *
+     * @param phieuHenKham the phieuHenKham to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new phieuHenKham, or with status {@code 400 (Bad Request)} if the phieuHenKham has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PostMapping("/phieu-hen-khams")
+    public ResponseEntity<PhieuHenKham> createPhieuHenKham(@Valid @RequestBody PhieuHenKham phieuHenKham) throws URISyntaxException {
+        log.debug("REST request to save PhieuHenKham : {}", phieuHenKham);
+        if (phieuHenKham.getId() != null) {
+            throw new BadRequestAlertException("A new phieuHenKham cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        PhieuHenKham result = phieuHenKhamService.save(phieuHenKham);
+        return ResponseEntity
+            .created(new URI("/api/phieu-hen-khams/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
+
+    /**
+     * {@code PUT  /phieu-hen-khams/:id} : Updates an existing phieuHenKham.
+     *
+     * @param id the id of the phieuHenKham to save.
+     * @param phieuHenKham the phieuHenKham to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated phieuHenKham,
+     * or with status {@code 400 (Bad Request)} if the phieuHenKham is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the phieuHenKham couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PutMapping("/phieu-hen-khams/{id}")
+    public ResponseEntity<PhieuHenKham> updatePhieuHenKham(
+        @PathVariable(value = "id", required = false) final Long id,
+        @Valid @RequestBody PhieuHenKham phieuHenKham
+    ) throws URISyntaxException {
+        log.debug("REST request to update PhieuHenKham : {}, {}", id, phieuHenKham);
+        if (phieuHenKham.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (!Objects.equals(id, phieuHenKham.getId())) {
+            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        }
+
+        if (!phieuHenKhamRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        PhieuHenKham result = phieuHenKhamService.update(phieuHenKham);
+        return ResponseEntity
+            .ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, phieuHenKham.getId().toString()))
+            .body(result);
+    }
+```
+
+
+## **10. Swagger**
+- __Swagger__ là một bộ công cụ mã nguồn mở để xây dựng OpenAPI specifications giúp chúng ta có thể thiết kế, xây dựng tài liệu và sử dụng REST APIs.
+Swagger cung cấp 3 tools chính cho các developers :
+
+  + __Swagger-Editor:__ dùng để design lên các APIs hoàn toàn mới hoặc edit lại các APIs có sẵn thông qua 1 file config.
+  + __Swagger-Codegen:__ dùng để generate ra code từ các file config có sẵn
+  + __Swagger-UI:__ dùng để generate ra file html,css,… từ 1 file config.
+- Một file swagger có thể viết bằng JSON hoặc YAML.
+  + __Metadata:__ Mọi thông số kỹ thuật của Swagger đều bắt đầu với phiên bản Swagger . Phiên bản Swagger xác định cấu trúc tổng thể của đặc tả API - những gì bạn có thể ghi lại và cách bạn ghi lại nó. Ngoài ra các thông tin chi tiết như tiêu đề, mô tả hay version của bản api hiện tại cũng được khai báo tại đây.
+  + __Base Url:__ Nơi bạn sẽ định nghĩa host của server, đường dẫn cơ bản cũng như giao thức https hoặc http.
+  + __Paths:__ xác định các điểm cuối riêng lẻ (đường dẫn) trong API của bạn và các phương thức HTTP (hoạt động) được hỗ trợ bởi các điểm cuối này. Và đây là phần quan trọng chứa thông tin API của bạn sẽ như thế nào bằng đường dẫn API, phương thức (GET, POST, PUT...), request (query, path, body..), response API.
+
+
+## **11. Chỉnh sửa giao diện và một số chức năng**
+
+### **11.1 : Giao diện Trang chủ của ứng dụng**
+
+\
+![InterfaceHome](https://user-images.githubusercontent.com/106305844/178146847-0bad6d9c-2ff5-4c9a-9937-a404d190d7b0.png)
+
+### **11.2 : Giao diện Thông tin bệnh nhân**
+
+\
+![InterfaceBenhNhan](https://user-images.githubusercontent.com/106305844/178146839-84424f59-af2e-448d-a8d0-dd555e16ca4b.png)
+
+### **11.3 : Giao diện Đăng ký hẹn khám**
+
+\
+![InterfaceDKHK](https://user-images.githubusercontent.com/106305844/178146843-b48169e3-f0b5-4050-b761-9a1351d8a227.png)
+
+### **11.4 : Giao diện lLịch sử hẹn khám**
+
+\
+![InterfaceLSHK](https://user-images.githubusercontent.com/106305844/178146852-0a9d93f1-6027-4dfe-9df1-91d70d558565.png)
+
+### **11.5 : Giao diện Lịch sử điều trị**
+
+\
+![InterfaceLSDT](https://user-images.githubusercontent.com/106305844/178146851-84084991-977d-4e52-a174-7d71a1e646eb.png)
+
+### **11.6 : Giao diện Thống kê chi phí**
+
+\
+![InterfaceThongKeChiPhi](https://user-images.githubusercontent.com/106305844/178146854-037b8dee-05af-4086-8308-a19af58bc1bf.png)
+
+### **11.7 : Giao diện Thông tin điều trị**
+
+\
+![InterfaceTTKCB](https://user-images.githubusercontent.com/106305844/178146835-5f7df99d-2c2d-4b2d-bd1f-fa3dd665ad77.png)
+
+
+### **11.8 : Giao diện Tra cứu xét nghiệm**
+
+\
+![InterfacePXN](https://user-images.githubusercontent.com/106305844/178146853-76130976-e2b7-454f-a535-dbeac0f2971e.png)
+
+### **11.9 : Giao diện Tra cứu CĐHA**
+
+\
+![InterfaceCDHA](https://user-images.githubusercontent.com/106305844/178146841-4ba38f40-3c40-4868-a29d-2fdef585b628.png)
+
